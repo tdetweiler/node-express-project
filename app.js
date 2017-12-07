@@ -9,6 +9,7 @@ var app = express();
 
 //view engine
 app.set('view engine', 'ejs');
+app.set('port', (process.env.PORT || 5000))
 app.set('views', path.join(__dirname, 'views'));
 
 app.use(bodyParser.json());
@@ -75,7 +76,7 @@ app.delete('/users/delete/:id', (req, res) => {
     })
 });
 
-app.listen(3000, () => {
-    console.log('Server started on port 3000');
+app.listen(app.get('port'), function() {
+    console.log("Node app is running at localhost:" + app.get('port'))
 });
 
