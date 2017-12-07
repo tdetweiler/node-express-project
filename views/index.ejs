@@ -1,0 +1,30 @@
+<% include partials/header %>
+    <h1>Sign up!</h1>
+    <% if(errors){ %>
+        <div class="error-list">
+            <ul>
+                <% errors.forEach(function(error){ %>
+                    <li><%= error.msg %></li>
+                <% }) %>
+            </ul>
+        </div>
+    <% } %>
+    <div class="form-div">
+        <form method="post" action="/users/add">
+            <input type="text" name="first_name" placeholder="First Name" />
+            <input type="text" name="last_name" placeholder="Last Name" />
+            <input type="text" name="email" placeholder="Email" />
+            <input type="submit" value="Submit" />
+        </form>
+    </div>
+    <div class="account-list">
+        <h1>Accounts</h1>
+        <ul>
+            <% users.forEach(function(user){ %>
+                <li><%= user.first_name %> <%= user.last_name %><a href="#" class='delete-account' account-id='<%= user._id %>'> -Delete</a></li>
+            <% }) %>
+        </ul>
+    </div>
+<% include partials/footer %>
+
+
