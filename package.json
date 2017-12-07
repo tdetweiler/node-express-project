@@ -2,9 +2,10 @@
   "name": "node-express-project",
   "version": "1.0.0",
   "description": "Simple node project with express",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js"
   },
   "author": "Todd Detweiler",
   "license": "ISC",
@@ -14,5 +15,9 @@
     "express": "^4.16.2",
     "express-validator": "^4.3.0",
     "mongojs": "^2.4.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tdetweiler/node-express-project"
   }
 }
