@@ -7,6 +7,8 @@ var db = mongojs('customerApp:Fu39pkw9pM5SGWRZ@node-express-app-test-shard-00-00
 var ObjectId = mongojs.ObjectId;
 var app = express();
 
+var currentStageOwner = "no one";
+
 //view engine
 app.set('view engine', 'ejs');
 app.set('port', (process.env.PORT || 5000))
@@ -31,6 +33,20 @@ app.get('/', (req, res) => {
         });
     });
     
+});
+
+app.post('/stage/who/', (req, res) => {
+    let command = req.body.command;
+
+    if(command == "/who-has-stage"){
+        res.send(currentStageOwner);
+    }else if(command == "/set-stage"){
+        currentStageOwner = req.body.text;
+        res.send(currentStageOwner + ' now holds stage');
+    }else if(command == "/drop-stage"){
+        currentStageOwner = 'no one';
+        res.send('no one now holds stage');
+    }
 });
 
 app.post('/users/add/', [
