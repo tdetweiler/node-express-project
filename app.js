@@ -7,7 +7,7 @@ var db = mongojs('customerApp:Fu39pkw9pM5SGWRZ@node-express-app-test-shard-00-00
 var ObjectId = mongojs.ObjectId;
 var app = express();
 
-var currentStageOwner = "no one";
+var currentStageOwner = "nobody";
 
 //view engine
 app.set('view engine', 'ejs');
@@ -32,7 +32,7 @@ app.get('/', (req, res) => {
             users: docs
         });
     });
-    
+
 });
 
 app.post('/stage/who/', (req, res) => {
@@ -44,7 +44,7 @@ app.post('/stage/who/', (req, res) => {
         currentStageOwner = req.body.text;
         res.send(currentStageOwner + ' now holds stage');
     }else if(command == "/drop-stage"){
-        currentStageOwner = 'no one';
+        currentStageOwner = 'nobody';
         res.send('no one now holds stage');
     }
 });
@@ -54,7 +54,7 @@ app.post('/users/add/', [
     check('last_name').isLength({ min: 1 }).withMessage('Last name can not be empty'),
     check('email').isEmail().withMessage('Email is not valid')
 ], (req, res) => {
-    
+
     const errors = validationResult(req);
 
     if(!errors.isEmpty()){
@@ -67,7 +67,7 @@ app.post('/users/add/', [
             })
         });
     } else{
-        var newUser = { 
+        var newUser = {
             first_name: req.body.first_name,
             last_name: req.body.last_name,
             email: req.body.email
