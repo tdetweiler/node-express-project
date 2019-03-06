@@ -39,13 +39,13 @@ app.post('/stage/who/', (req, res) => {
     let command = req.body.command;
 
     if(command == "/who-has-stage"){
-        res.send(currentStageOwner);
+        res.send({response_type: "ephemeral", text: currentStageOwner});
     }else if(command == "/set-stage"){
         currentStageOwner = req.body.text;
-        res.send({"response_type": "in_channel", "text": currentStageOwner + ' now haz stage'});
+        res.send({response_type: "in_channel", text: currentStageOwner + ' now haz stage'});
     }else if(command == "/drop-stage"){
         currentStageOwner = 'nobody';
-        res.send({"response_type": "in_channel", "text": 'nobody now haz stage'});
+        res.send({response_type: "in_channel", text: 'nobody now haz stage'});
     }
 });
 
