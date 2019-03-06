@@ -42,10 +42,10 @@ app.post('/stage/who/', (req, res) => {
         res.send(currentStageOwner);
     }else if(command == "/set-stage"){
         currentStageOwner = req.body.text;
-        res.send(currentStageOwner + ' now holds stage');
+        res.send({"response_type": "in_channel", "text": currentStageOwner + ' now haz stage'});
     }else if(command == "/drop-stage"){
         currentStageOwner = 'nobody';
-        res.send('no one now holds stage');
+        res.send({"response_type": "in_channel", "text": 'nobody now haz stage'});
     }
 });
 
